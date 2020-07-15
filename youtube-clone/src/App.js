@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid } from '@material-ui/core'; // curly braces around means tht this is not a default export but youtube is
-import youtube from './api/youtube';
+//import youtube from './api/youtube';
+import SearchBar from './components/SearchBar';
+import VideoDetail from './components/VideoDetail';
 
 class App extends React.Component {
     render() {
@@ -10,9 +12,11 @@ class App extends React.Component {
                     <Grid container spacing={16}>
                         <Grid item xs={12}>
                             {/* Search Bar */}
+                            <SearchBar />
                         </Grid>
                         <Grid item xs={8}>
                             {/* Video detail */}
+                            <VideoDetail />
                         </Grid>
                         <Grid item xs={4}>
                             {/* Video List */}
