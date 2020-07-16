@@ -10,13 +10,21 @@ class App extends React.Component {
         selectedVideo : null
     }
 
+    componentDidMount() {
+        this.handleSubmit('pdf generation with react and node');
+    }
+
+    onVideoSelect = (video) => {
+        this.setState({ selectedVideo : video})
+    }
+
     //async stops the execution of code until something is fetched
     handleSubmit = async (searchTerm) => {
         const response = await youtube.get('search',{ 
             params : {
                 part : 'snippet',
                 maxResults : 5,
-                key : 'key',
+                key : 'AIzaSyDGKeShkGlI_6HEf04oAfJHGaO-_u_D4as',
                 q:searchTerm
             }
         });
@@ -31,8 +39,8 @@ class App extends React.Component {
         const {selectedVideo, videos} = this.state;
 
         return (
-            <Grid justify="center" container spacing={10}>
-                <Grid item xs={12}>
+            <Grid style={{ justifyContent: "center" }} container spacing={10}>
+                <Grid item xs={11}>
                     <Grid container spacing={10}>
                         <Grid item xs={12}>
                             {/* Search Bar */}
@@ -44,7 +52,7 @@ class App extends React.Component {
                         </Grid>
                         <Grid item xs={4}>
                             {/* Video List */}
-                            {/* <VideoList videos={videos} /> */}
+                            <VideoList videos={videos} onVideoSelect={this.onVideoSelect} />
                         </Grid>
                     </Grid>
                 </Grid>
