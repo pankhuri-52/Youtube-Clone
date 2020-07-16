@@ -1,12 +1,12 @@
 import React from 'react';
 import { Grid } from '@material-ui/core'; // curly braces around means tht this is not a default export but youtube is
 import youtube from './api/youtube';
-import {SearchBar, VideoDetail} from './components';
+import {SearchBar, VideoDetail, VideoList} from './components';
 
 class App extends React.Component {
 
     state = {
-        video : [],
+        videos : [],
         selectedVideo : null
     }
 
@@ -16,17 +16,19 @@ class App extends React.Component {
             params : {
                 part : 'snippet',
                 maxResults : 5,
-                key : 'AIzaSyDwtw8eSkhwl3rx6_iEgOw4qW3VjJO2MCM',
+                key : 'key',
                 q:searchTerm
             }
         });
+
+        console.log(response);
 
         this.setState({ videos : response.data.items, selectedVideo : response.data.items[0] });
     }
 
     render() {
 
-        const {selectedVideo} = this.state;
+        const {selectedVideo, videos} = this.state;
 
         return (
             <Grid justify="center" container spacing={10}>
@@ -42,6 +44,7 @@ class App extends React.Component {
                         </Grid>
                         <Grid item xs={4}>
                             {/* Video List */}
+                            {/* <VideoList videos={videos} /> */}
                         </Grid>
                     </Grid>
                 </Grid>

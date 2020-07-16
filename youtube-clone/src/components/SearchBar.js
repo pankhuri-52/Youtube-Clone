@@ -4,7 +4,7 @@ import {Paper, TextField} from '@material-ui/core';
 class SearchBar extends React.Component{
 
     state = {
-        searchTerm : ''
+        searchTerm : ""
     }
 
     //declare a normal function, we have to bind the function in class

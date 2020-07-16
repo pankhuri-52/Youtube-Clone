@@ -7,6 +7,8 @@ const VideoDetail = ({ video }) => {
 
     const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
 
+    console.log(videoSrc);
+
     return (
         <React.Fragment>
             <Paper elevation={6} style={{ height : '70%' }}>
